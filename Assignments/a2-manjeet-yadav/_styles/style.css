@@ -1,0 +1,58 @@
+/* Manjeet Singh Yadav - Date: 12-02-2025 */
+  #heading {
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  input[type="number"] {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 20%;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  #result,p {
+    font-size: 1.7em;
+    color: #252525;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  #clear{
+    display: block;
+    margin: 20px auto;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 1px solid #333;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .conversion-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto 300px;
+  }
+  .conversion-buttons button {
+    width: 50%;
+    margin: 5px 2.5% 20px;
+  }
+/* Manjeet Singh Yadav - Date: 12-02-2025 */

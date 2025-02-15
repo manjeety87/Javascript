@@ -1,0 +1,210 @@
+HTML:
+<!-- Manjeet Singh Yadav - Date: 12-02-2025 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="_styles/style.css" />
+    <title>Assignment 2 for Manjeet Singh Yadav</title>
+  </head>
+  <body>
+    <div id="heading">
+      <h1>
+        Assignment 2<br />Manjeet Singh Yadav<br />Instructor: Sukhbir Tatla
+      </h1>
+    </div>
+    <hr />
+
+    <div class="conversion-buttons">
+      <input
+        type="number"
+        class="amount"
+        id="UStoCADInput"
+        placeholder="Enter amount"
+      />
+      <button id="UStoCAD">USD to CAD</button>
+      <p id="UStoCADOutput">output</p>
+      <br />
+
+      <input
+        type="number"
+        class="amount"
+        id="CADtoUSDInput"
+        placeholder="Enter amount"
+      />
+      <button id="CADtoUSD">CAD to USD</button>
+      <p id="CADtoUSDOutput">output</p>
+      <br />
+
+      <input
+        type="number"
+        class="amount"
+        id="UStoEuroInput"
+        placeholder="Enter amount"
+      />
+      <button id="UStoEuro">USD to Euro</button>
+      <p id="UStoEuroOutput">output</p>
+      <br />
+
+      <input
+        type="number"
+        class="amount"
+        id="EurotoUSDInput"
+        placeholder="Enter amount"
+      />
+      <button id="EurotoUSD">Euro to USD</button>
+      <p id="EurotoUSDOutput">output</p>
+      <br />
+
+      <input
+        type="number"
+        class="amount"
+        id="UStoINRInput"
+        placeholder="Enter amount"
+      />
+      <button id="UStoINR">USD to INR</button>
+      <p id="UStoINROutput">output</p>
+      <br />
+
+      <input
+        type="number"
+        class="amount"
+        id="INRtoUSDInput"
+        placeholder="Enter amount"
+      />
+      <button id="INRtoUSD">INR to USD</button>
+      <p id="INRtoUSDOutput">output</p>
+      <br />
+    </div>
+
+    <button id="clear">Clear</button>
+    <script src="_scripts/script.js"></script>
+  </body>
+</html>
+<!-- Manjeet Singh Yadav - Date: 12-02-2025 -->
+
+
+CSS:
+/* Manjeet Singh Yadav - Date: 12-02-2025 */
+  #heading {
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  input[type="number"] {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 20%;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  #result,p {
+    font-size: 1.7em;
+    color: #252525;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  #clear{
+    display: block;
+    margin: 20px auto;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 1px solid #333;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .conversion-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto 300px;
+  }
+  .conversion-buttons button {
+    width: 50%;
+    margin: 5px 2.5% 20px;
+  }
+/* Manjeet Singh Yadav - Date: 12-02-2025 */
+
+
+SCRIPT:
+// Manjeet Singh Yadav - Date: 12-02-2025
+const conversionRates = {
+  USDToEuro: 0.9683,
+  EuroToUSD: 1 / 0.9683,
+  USDToFranc: 1 / 0.9683,
+  FrancToUSD: 1 / 0.93,
+  USDToCAD: 1.43182,
+  CADToUSD: 1 / 1.43182,
+  INRToUSD: 0.01151,
+  USDToINR: 1 / 0.01151,
+};
+const convertCurrency = (amount, fromCurrency, toCurrency) => {
+  const key = `${fromCurrency}To${toCurrency}`;
+  return (amount * conversionRates[key]).toFixed(2) || "Invalid conversion";
+};
+
+// Handle the conversion for each button
+const handleConversion = (button, fromCurrency, toCurrency) => {
+  console.log(button.id, fromCurrency, toCurrency);
+
+  const inputElement = document.querySelector(`#${button.id}Input`);
+  const resultElement = document.querySelector(`#${button.id}Output`);
+  const amount = parseFloat(inputElement.value);
+  const result = convertCurrency(amount, fromCurrency, toCurrency);
+  resultElement.innerText = result;
+};
+
+// Add event listeners to each button by ID
+document.getElementById("UStoCAD").addEventListener("click", () => {
+  handleConversion(document.getElementById("UStoCAD"), "USD", "CAD");
+});
+
+document.getElementById("CADtoUSD").addEventListener("click", () => {
+  handleConversion(document.getElementById("CADtoUSD"), "CAD", "USD");
+});
+
+document.getElementById("UStoEuro").addEventListener("click", () => {
+  handleConversion(document.getElementById("UStoEuro"), "USD", "Euro");
+});
+
+document.getElementById("EurotoUSD").addEventListener("click", () => {
+  handleConversion(document.getElementById("EurotoUSD"), "Euro", "USD");
+});
+
+document.getElementById("UStoINR").addEventListener("click", () => {
+  handleConversion(document.getElementById("UStoINR"), "USD", "INR");
+});
+
+document.getElementById("INRtoUSD").addEventListener("click", () => {
+  handleConversion(document.getElementById("INRtoUSD"), "INR", "USD");
+});
+
+document.getElementById("clear").addEventListener("click", function () {
+  document.querySelectorAll(".amount").forEach((input) => (input.value = ""));
+  document
+    .querySelectorAll("[id$='Output']")
+    .forEach((p) => (p.innerText = "output"));
+  document.querySelector(".amount").focus();
+});
+// Manjeet Singh Yadav - Date: 12-02-2025
